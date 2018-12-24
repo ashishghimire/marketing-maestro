@@ -1,0 +1,1 @@
+[27-Jan-2017 09:40:41 Europe/Rome] PHP Warning:  file_get_contents(): Filename cannot be empty in /home/bizpalace01/public_html/live/assets/backend/custom/responsive_filemanager/filemanager/upload.php on line 75

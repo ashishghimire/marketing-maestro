@@ -1,0 +1,34 @@
+/* Add here all your css styles (customizations) */
+
+/* slider carousel css begins */
+
+.slider-carousel {
+  background-image: url("../../uploads/Slider/im1.jpeg");
+  margin-bottom: 40px;
+  background-attachment: fixed;
+}
+
+.left:hover,
+.right:hover {
+  background: black;
+}
+
+.carousel-inner img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+/* slider carousel css ends */
+
+/* img-responsive css */
+.img-responsive {
+  margin-left: 0.7px;
+}
+
+/* 
+style="height:324px; width:100%; object-fit:cover;"
+<a href="{{url('show',$row->slug)}}">
+style="height:100px; width:100px; object-fit:fill;"
+fa fa-chevron-circle-left
+ */

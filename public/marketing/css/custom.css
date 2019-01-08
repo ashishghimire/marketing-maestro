@@ -4,13 +4,31 @@
 
 .slider-carousel {
   background-image: url("../../uploads/Slider/im1.jpeg");
+  height: 100%;
   margin-bottom: 40px;
   background-attachment: fixed;
+  /* -webkit-filter: blur(5px);
+  filter: blur(2px); */
 }
 
-.left:hover,
-.right:hover {
-  background: black;
+.left-icon,
+.right-icon {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%; /*top left, top right, bottom right, bottom left*/
+  -webkit-border-radius: 50%; /* For safari ios android */
+  -moz-border-radius: 50%; /* For Mozilla  */
+}
+
+.left-icon:hover,
+.right-icon:hover {
+  zoom: 1.2;
+  -webkit-transition: width 2s; /* Safari */
+  transition: width 2s;
+  /* background-color: #fff;
+  color: black;
+  border: 2px solid black; */
 }
 
 .carousel-inner img {
@@ -19,6 +37,13 @@
   margin-right: auto;
   width: 80%;
 }
+
+.carousel-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
 /* slider carousel css ends */
 
 /* img-responsive css */
@@ -32,3 +57,12 @@ style="height:324px; width:100%; object-fit:cover;"
 style="height:100px; width:100px; object-fit:fill;"
 fa fa-chevron-circle-left
  */
+
+.justify-paragraph {
+  text-align: justify;
+}
+
+.imagesss:hover {
+  -webkit-filter: blur(5px);
+  filter: blur(1.5px);
+}

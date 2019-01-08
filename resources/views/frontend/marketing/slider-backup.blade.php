@@ -11,12 +11,12 @@
         <div class="carousel-inner">
             @forelse($sliderContent as $key=> $content)
                 <div class="item {{$key==0 ?'active':''}}" id="slide{{$key+1}}">
-                    <img class="carousel-image "
-                         src="{{url($content->filePath.$content->file)}}" style="width:935px;
+                    {{--                    {{dd('')}}--}}
+                    <img src="{{url($content->filePath.$content->file)}}" style="width:935px;
                 height:600px;object-fit: cover;">
                     <div class="carousel-caption">
-                        <h4 class="carousel-heading"> {{$content->title}}</h4>
-                        <h5> {{date("j F Y", strtotime($content->created_at))}}</h5>
+                        <h4> Bipin Maestro</h4>
+                        <p> We are one of the finest digital marketing company of Nepal. </p>
                     </div>
                 </div>
             @empty

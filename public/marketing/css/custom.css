@@ -3,27 +3,28 @@
 /* slider carousel css begins */
 
 .slider-carousel {
-  background-image: url("../../uploads/Slider/im1.jpeg");
-  margin-bottom: 40px;
-  background-attachment: fixed;
+    background-image: url("../../uploads/Slider/im1.jpeg");
+    margin-bottom: 40px;
+    background-attachment: fixed;
 }
 
 .left:hover,
 .right:hover {
-  background: black;
+    /*background: white;*/
 }
 
 .carousel-inner img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
+
 /* slider carousel css ends */
 
 /* img-responsive css */
 .img-responsive {
-  margin-left: 0.7px;
+    margin-left: 0.7px;
 }
 
 /* 

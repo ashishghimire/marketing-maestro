@@ -361,7 +361,7 @@
 	    <a target="_blank" href="https://www.facebook.com/marketingmaestronpl/" class="g-popup--fb__logo"><img alt="facebook" src="{{url('public/uploads/fb.png')}}" width="110"></a>
 	    <div class="g-popup--fb-message">Click <strong>"Like"</strong><br>to read our blog on Facebook</div>
 	  </div>
-	  <div class="g-popup--fb-widjet">
+	  <div class="g-popup--fb-widjet">pp
 			<div id="fb-root"></div>
 				<script>(function(d, s, id) {
 				  var js, fjs = d.getElementsByTagName(s)[0];
@@ -414,9 +414,28 @@
 	});
 </script>
 
-	<script src="{{asset('marketing/plugins/respond.js')}}"></script>
-	<script src="{{asset('marketing/plugins/html5shiv.js')}}"></script>
-	<script src="{{asset('marketing/plugins/placeholder-IE-fixes.js')}}"></script>
+{{-- <script src="{{asset('marketing/plugins/respond.js')}}"></script>
+<script src="{{asset('marketing/plugins/html5shiv.js')}}"></script>
+<script src="{{asset('marketing/plugins/placeholder-IE-fixes.js')}}"></script> --}}
+
+<script>
+	var fixmeTop = $('.fixme').offset().top;
+	$(window).scroll(function() {
+		var currentScroll = $(window).scrollTop();
+		if (currentScroll >= fixmeTop) {
+			$('.fixme').css({
+				position: 'fixed',
+				top: '0',
+				width:'260px'
+				// left: '0'
+			});
+		} else {
+			$('.fixme').css({
+				position: 'static'
+			});
+		}
+	});
+</script>
 
 </body>
 </html>

@@ -31,7 +31,10 @@
 							<div class="addthis_sharing_toolbox"></div>
 						</div>
 					</div>
-					<img class="img-responsive" src="{{url('public/uploads/CaseStudy',$data->file)}}" alt="">
+					<img class="img-responsive"
+						 src="{{url('/uploads/CaseStudy',$data->file)}}"
+						 style="height:400px; width:100%; object-fit:cover;"
+						 alt="">
 				</div>
 				<!-- End Blog Grid -->
 				<p>{!!$data->description!!}</p><br>
@@ -44,13 +47,7 @@
 				<!-- Blog Grid Tagds -->
 				<ul class="blog-grid-tags">
 					<strong>Category:</strong> <li class="head">Case Study</li>
-
-
-				  
-				   
 				</ul>
-
-				
 
 				<!-- Blog Thumb v4 -->
 				<div class="margin-bottom-50">
@@ -117,6 +114,7 @@
 				</div>
 				<!-- End Blog Thumb v4 -->
 
+				{{--
 				<!-- Blog Comments v2 -->
 				<div class="margin-bottom-50">
 					<h2 class="title-v4">Comments (3)</h2>
@@ -199,10 +197,11 @@
 						<p>Your comment was successfully posted!</p>
 					</div>
 				</form>
-				<!-- End Form -->
+				<!-- End Form -->--}}
 			</div>
 
 			<div class="col-md-3">
+				{{--
 				<!-- Blog Thumb v3 -->
 				<div class="margin-bottom-50">
 					<h2 class="title-v4">Blog &amp; Comments</h2>
@@ -240,8 +239,70 @@
 						<h3><a href="#">Controversial plan to test new primary school pupils infuriates teachers</a></h3>
 					</div>
 				</div>
-				<!-- End Blog Thumb v3 -->
+				<!-- End Blog Thumb v3 -->--}}
 
+				<!-- Blog Thumb v2 -->
+				<div class="margin-bottom-50">
+						<h2 class="title-v4">Recent News</h2>
+	
+						<div class="blog-thumb blog-thumb-circle margin-bottom-15">
+							<div class="blog-thumb-hover">
+								<img class="rounded-x" src="assets/img/blog/img1.jpg" alt="">
+								<a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
+							</div>
+							<div class="blog-thumb-desc">
+								<h3><a href="blog_single.html">Misused words and how to use them correctly</a></h3>
+								<ul class="blog-thumb-info">
+									<li>Mar 6, 2015</li>
+									{{-- <li><a href="#"><i class="fa fa-comments"></i> 0</a></li> --}}
+								</ul>
+							</div>
+						</div>
+	
+						<div class="blog-thumb blog-thumb-circle margin-bottom-15">
+							<div class="blog-thumb-hover">
+								<img class="rounded-x" src="assets/img/blog/img22.jpg" alt="">
+								<a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
+							</div>
+							<div class="blog-thumb-desc">
+								<h3><a href="blog_single.html">8 health benefits and drawbacks of coffee</a></h3>
+								<ul class="blog-thumb-info">
+									<li>Mar 6, 2015</li>
+									{{-- <li><a href="#"><i class="fa fa-comments"></i> 0</a></li> --}}
+								</ul>
+							</div>
+						</div>
+	
+						<div class="blog-thumb blog-thumb-circle margin-bottom-15">
+							<div class="blog-thumb-hover">
+								<img class="rounded-x" src="assets/img/blog/img2.jpg" alt="">
+								<a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
+							</div>
+							<div class="blog-thumb-desc">
+								<h3><a href="blog_single.html">What are the top five books you must read?</a></h3>
+								<ul class="blog-thumb-info">
+									<li>Mar 6, 2015</li>
+									{{-- <li><a href="#"><i class="fa fa-comments"></i> 0</a></li> --}}
+								</ul>
+							</div>
+						</div>
+	
+						<div class="blog-thumb blog-thumb-circle">
+							<div class="blog-thumb-hover">
+								<img class="rounded-x" src="assets/img/blog/img21.jpg" alt="">
+								<a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
+							</div>
+							<div class="blog-thumb-desc">
+								<h3><a href="blog_single.html">Stylish things to do, see and buy this week</a></h3>
+								<ul class="blog-thumb-info">
+									<li>Mar 6, 2015</li>
+									{{-- <li><a href="#"><i class="fa fa-comments"></i> 0</a></li> --}}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- End Blog Thumb v2 -->
+				
 				<!-- Social Shares -->
 				<div class="margin-bottom-50">
 					<h2 class="title-v4">Social</h2>
@@ -265,68 +326,7 @@
 				</div>
 				<!-- End Social Shares -->
 
-				<!-- Blog Thumb v2 -->
-				<div class="margin-bottom-50">
-					<h2 class="title-v4">Recent News</h2>
-
-					<div class="blog-thumb blog-thumb-circle margin-bottom-15">
-						<div class="blog-thumb-hover">
-							<img class="rounded-x" src="assets/img/blog/img1.jpg" alt="">
-							<a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
-						</div>
-						<div class="blog-thumb-desc">
-							<h3><a href="blog_single.html">Misused words and how to use them correctly</a></h3>
-							<ul class="blog-thumb-info">
-								<li>Mar 6, 2015</li>
-								<li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="blog-thumb blog-thumb-circle margin-bottom-15">
-						<div class="blog-thumb-hover">
-							<img class="rounded-x" src="assets/img/blog/img22.jpg" alt="">
-							<a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
-						</div>
-						<div class="blog-thumb-desc">
-							<h3><a href="blog_single.html">8 health benefits and drawbacks of coffee</a></h3>
-							<ul class="blog-thumb-info">
-								<li>Mar 6, 2015</li>
-								<li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="blog-thumb blog-thumb-circle margin-bottom-15">
-						<div class="blog-thumb-hover">
-							<img class="rounded-x" src="assets/img/blog/img2.jpg" alt="">
-							<a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
-						</div>
-						<div class="blog-thumb-desc">
-							<h3><a href="blog_single.html">What are the top five books you must read?</a></h3>
-							<ul class="blog-thumb-info">
-								<li>Mar 6, 2015</li>
-								<li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="blog-thumb blog-thumb-circle">
-						<div class="blog-thumb-hover">
-							<img class="rounded-x" src="assets/img/blog/img21.jpg" alt="">
-							<a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
-						</div>
-						<div class="blog-thumb-desc">
-							<h3><a href="blog_single.html">Stylish things to do, see and buy this week</a></h3>
-							<ul class="blog-thumb-info">
-								<li>Mar 6, 2015</li>
-								<li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- End Blog Thumb v2 -->
-
+				{{--
 				<!-- Tab v5 -->
 				<div class="tab-v5 margin-bottom-50">
 					<ul class="nav nav-tabs" role="tablist">
@@ -481,7 +481,7 @@
 						</li>
 					</ul>
 				</div>
-				<!-- End Twitter Posts -->
+				<!-- End Twitter Posts -->--}}
 			</div>
 		</div>
 	</div>

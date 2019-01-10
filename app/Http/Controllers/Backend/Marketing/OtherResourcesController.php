@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Marketing;
 
+use App\Services\FileService;
 use Illuminate\Http\Request;
 use App\Models\Marketing\OtherResource;
 use App\Models\Marketing\OtherResourceCategory;
@@ -13,16 +14,20 @@ class OtherResourcesController extends Controller
 {
     public $model;
    public $otherresourcecategory;
-        
-        
+    /**
+     * @var FileService
+     */
+    private $fileService;
 
-        public function __construct(OtherResource $model, OtherResourceCategory $otherresourcecategory )
+
+    public function __construct(OtherResource $model, OtherResourceCategory $otherresourcecategory, FileService $fileService )
         {
 
             $this->model = $model;
             $this->otherresourcecategory = $otherresourcecategory;
-           
-            
+
+
+            $this->fileService = $fileService;
         }
 
 
@@ -61,35 +66,38 @@ class OtherResourcesController extends Controller
                 'title'=>'required',
                 'description'=>'required',
                 'file'=>'required|mimes:jpg,jpeg,png,gif,svg,bmp',
-
+                'coverpic'=>'required|mimes:jpg,jpeg,png,gif,svg,bmp',
 
            ));
 
-            if ($request->hasFile('file')) 
-         {
-         
-            $file = $request->file('file');
-
-            $originalName = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $size = $file->getClientSize();
-            $originalNameWithoutExt = substr($originalName , 0 , strlen($originalName) - strlen($extension) - 1);
-            $number = mt_rand(10000 , 99999);
-            $filename = $originalNameWithoutExt . '-' . $number .  "." .$extension;
-            $file = $request->file('file');
-            $p = $file-> move( base_path() . '/public/uploads/OtherResource/' , $filename );
-           
             $data = [
-                
+
                 'title' => $request->title,
                 'description' => $request->description,
                 'featured' => $request->featured ? $request->featured : 0,
                 'slug' => $request->slug,
-                'file'  => $filename,
+//                'file'  => $filename,
                 'order'=>$request->order,
                 'other_resource_category_id'=>$request->other_resource_category_id,
-                'slug'=>$slug,   
+                'slug'=>$slug,
             ];
+
+            if ($request->hasFile('file') || $request->hasFile('coverpic'))
+         {
+
+             if ($request->hasFile('file')) {
+                 $file = $request->file('file');
+                 $filename = $this->fileService->storeFile($file);
+                 $p = $file->move(base_path() . '/public/uploads/OtherResource/', $filename);
+                 $data['file'] = $filename;
+             }
+
+             if ($request->hasFile('coverpic')) {
+                 $coverPic = $request->file('coverpic');
+                 $coverPicName = $this->fileService->storeFile($coverPic);
+                 $p = $coverPic->move(base_path() . '/public/uploads/OtherResource/cover-pics', $coverPicName);
+                 $data['coverpic'] = $coverPicName;
+             }
             
             $latest=$this->model->create($data);
             }
@@ -126,44 +134,39 @@ class OtherResourcesController extends Controller
 
         public function update($id , Request $request)
         {
-              
-     
-              if($request->hasFile('file'))
-            
-            {
-
-            $file = $request->file('file');
-            
-
-           $originalName = $file->getClientOriginalName();
-
-            $extension = $file->getClientOriginalExtension();
-            $size = $file->getClientSize();
-            $originalNameWithoutExt = substr($originalName , 0 , strlen($originalName) - strlen($extension) - 1);
-            
-            $filename = $originalNameWithoutExt . '-'  . '-'  . "." . $extension;
-            $file = $request->file('file');
 
 
-           $p = $file->move(
-                base_path() . '/public/uploads/OtherResource/' , $filename
-            );
-            
-           $data = [
-                
-              
+            $data = [
+
+
                 'title' => $request->title,
                 'description' => $request->description,
                 'featured' => $request->featured,
-                'file'      => $filename,
+//                'file'      => $filename,
                 'other_resource_category_id'=>$request->other_resource_category_id,
 
-                
+
             ];
 
-          $this->model->find($id)->update($data);
-      }
-      else
+            if ($request->hasFile('file') || $request->hasFile('coverpic')) {
+
+                if ($request->hasFile('file')) {
+                    $file = $request->file('file');
+                    $filename = $this->fileService->storeFile($file);
+                    $p = $file->move(base_path() . '/public/uploads/OtherResource', $filename);
+                    $data['file'] = $filename;
+                }
+
+                if ($request->hasFile('coverpic')) {
+                    $coverPic = $request->file('coverpic');
+                    $coverPicName = $this->fileService->storeFile($coverPic);
+                    $p = $file->move(base_path() . '/public/uploads/OtherResource/cover-pics', $coverPicName);
+                    $data['coverpic'] = $coverPicName;
+                }
+
+                $this->model->find($id)->update($data);
+            }
+            else
       {
         
 

@@ -294,10 +294,10 @@
                     <div class="owl-navigation">
                         <div class="customNavigation">
                             <a class="owl-btn prev-v3">
-                                <i class="fa fa-chevron-circle-left"></i>
+                                <i class="fa fa-caret-square-o-left"></i>
                             </a>
                             <a class="owl-btn next-v3">
-                                <i class="fa fa-chevron-circle-right"></i>
+                                <i class="fa fa-caret-square-o-right"></i>
                             </a>
                         </div>
                     </div><!--/navigation-->
@@ -460,7 +460,7 @@
                                     @if($movies_featured == null)
                                         <div class="blog-grid sm-margin-bottom-40">
                                             <img class="img-responsive"
-                                                 src="{{url('/uploads/im3.jpeg')}}"
+                                                 src="{{url('/uploads/Slider/im3.jpeg')}}"
                                                  style="height:324px; width:100%; object-fit:cover;"
                                                  alt="Loading!!">
                                             <h3><a href="#">No Featured Post</a></h3>
@@ -550,10 +550,10 @@
                         <div class="owl-navigation">
                             <div class="customNavigation">
                                 <a class="owl-btn prev-v3">
-                                    <i class="fa fa-chevron-circle-left"></i>
+                                    <i class="fa fa-caret-square-o-left"></i>
                                 </a>
                                 <a class="owl-btn next-v3">
-                                    <i class="fa fa-chevron-circle-right"></i>
+                                    <i class="fa fa-caret-square-o-right"></i>
                                 </a>
                             </div>
                         </div><!--/navigation-->
@@ -773,8 +773,8 @@
                         <h2>Latest Case Study Section</h2>
                         <div class="owl-navigation">
                             <div class="customNavigation">
-                                <a class="owl-btn prev-v3"><i class="fa fa-chevron-circle-left"></i></a>
-                                <a class="owl-btn next-v3"><i class="fa fa-chevron-circle-right"></i></a>
+                                <a class="owl-btn prev-v3"><i class="fa fa-caret-square-o-left"></i></a>
+                                <a class="owl-btn next-v3"><i class="fa fa-caret-square-o-right"></i></a>
                             </div>
                         </div><!--/navigation-->
                     </div>
@@ -933,8 +933,8 @@
                     <h2>Latest Interview Section</h2>
                     <div class="owl-navigation">
                         <div class="customNavigation">
-                            <a class="owl-btn prev-v3"><i class="fa fa-chevron-circle-left"></i></a>
-                            <a class="owl-btn next-v3"><i class="fa fa-chevron-circle-right"></i></a>
+                            <a class="owl-btn prev-v3"><i class="fa fa-caret-square-o-left"></i></a>
+                            <a class="owl-btn next-v3"><i class="fa fa-caret-square-o-right"></i></a>
                         </div>
                     </div><!--/navigation-->
                 </div>
@@ -1062,6 +1062,24 @@
                             allow="encrypted-media">
                     </iframe>
                 </div><!-- facebookc Posts -->
+
+                <div class="margin-bottom-50">
+                    <h2 class="title-v4"> Ads block </h2>
+                    <div class="fixme">
+                        <img class="img-responsive margin-bottom-5"
+                            src="{{url('/uploads/Slider/im1.jpeg')}}"
+                            style="height: 250px; width:100%;"
+                            alt="">
+                        <img class="img-responsive margin-bottom-5"
+                             src="{{url('/uploads/Slider/im2.jpeg')}}"
+                             style="height: 250px; width:100%;"
+                             alt="">
+                        <div class="text-center">
+                             <h4 class="text-center;" style="font-weight: bold;"> Skip Ad? </h4>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- End Right Sidebar -->
         </div>

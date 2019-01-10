@@ -30,7 +30,10 @@
 							<div class="addthis_sharing_toolbox"></div>
 						</div>
 					</div>
-					<img class="img-responsive" src="{{url('public/uploads/Advertising1/'.$data->file)}}" {{-- style="height: 250px; width:300px;" --}} alt="">
+					<img class="img-responsive"
+						 src="{{url('/uploads/Advertising1/'.$data->file)}}"
+						 style="height:400px; width:100%; object-fit:cover;" 
+						 	{{-- style="height: 250px; width:300px;" --}} alt="">
 				</div>
 				<!-- End Blog Grid -->
 				<p>{!!$data->description!!}</p><br>
@@ -61,7 +64,10 @@
 							<!-- Blog Thumb v4 -->
 							<div class="blog-thumb-v4">
 								<div class="blog-thumb-item">
-									<img class="img-responsive margin-bottom-10" src="{{url('public/uploads/Advertising1/'.$row->file)}}" style="height: 150px; width:150px";" alt="">
+									<img class="img-responsive img-thumbnail margin-bottom-10"
+										 src="{{url('/uploads/Advertising1/'.$row->file)}}"
+										 style="height: 150px; width:150px; object-fit:fill" 
+										 alt="">
 									<div class="center-wrap">
 										<div class="center-alignCenter">
 											<div class="center-body">
@@ -89,9 +95,11 @@
 						</div> --}}
 					</div><!--/end row-->
 				</div>
+			</div>
 				<!-- End Blog Thumb v4 -->
 
 				<!-- Blog Comments v2 -->
+				{{--
 				<div class="margin-bottom-50">
 					<h2 class="title-v4">Comments (3)</h2>
 
@@ -174,10 +182,11 @@
 					</div>
 				</form>
 				<!-- End Form -->
-			</div>
+			</div> --}}
 
 			<div class="col-md-3">
 				<!-- Blog Thumb v3 -->
+				{{--
 				<div class="margin-bottom-50">
 					<h2 class="title-v4">Blog &amp; Comments</h2>
 
@@ -194,7 +203,30 @@
 					@endforeach
 
 				</div>
+				--}}
 				<!-- End Blog Thumb v3 -->
+
+				<!-- Blog Thumb v2 -->
+				<div class="margin-bottom-50">
+					<h2 class="title-v4">Recent News</h2>
+					
+					@foreach($recentad as $row)
+					<div class="blog-thumb blog-thumb-circle margin-bottom-15">
+						<div class="blog-thumb-hover">
+							<img class="rounded-x" src="{{url('public/uploads/Advertising1/'.$row->file)}}" style="height: 150px; width:150px";" alt="">
+							<a class="hover-grad" href="{{url('show',$row->slug)}}"><i class="fa fa-link"></i></a>
+						</div>
+						<div class="blog-thumb-desc">
+							<h3><a href="{{url('show',$row->slug)}}">{{$row->title}}</a></h3>
+							<ul class="blog-thumb-info">
+								<li>{{ date('M  j, Y ',strtotime($row->created_at))}}</li>
+								{{-- <li><a href="#"><i class="fa fa-comments"></i> 0</a></li> --}}
+							</ul>
+						</div>
+					</div>
+					@endforeach
+				</div>
+				<!-- End Blog Thumb v2 -->
 
 				<!-- Social Shares -->
 				<div class="margin-bottom-50">
@@ -219,35 +251,7 @@
 				</div>
 				<!-- End Social Shares -->
 
-				<!-- Blog Thumb v2 -->
-				<div class="margin-bottom-50">
-					<h2 class="title-v4">Recent News</h2>
-					
-					@foreach($recentad as $row)
-					<div class="blog-thumb blog-thumb-circle margin-bottom-15">
-						<div class="blog-thumb-hover">
-							<img class="rounded-x" src="{{url('public/uploads/Advertising1/'.$row->file)}}" style="height: 150px; width:150px";" alt="">
-							<a class="hover-grad" href="{{url('show',$row->slug)}}"><i class="fa fa-link"></i></a>
-						</div>
-						<div class="blog-thumb-desc">
-							<h3><a href="{{url('show',$row->slug)}}">{{$row->title}}</a></h3>
-							<ul class="blog-thumb-info">
-								<li>{{ date('M  j, Y ',strtotime($row->created_at))}}</li>
-								<li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
-							</ul>
-						</div>
-					</div>
-					@endforeach
-
-					
-
-					
-
-					
-				</div>
-				<!-- End Blog Thumb v2 -->
-
-				<!-- Tab v5 -->
+				{{--<!-- Tab v5 -->
 				<div class="tab-v5 margin-bottom-50">
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="home active">
@@ -402,6 +406,7 @@
 					</ul>
 				</div>
 				<!-- End Twitter Posts -->
+				--}}
 			</div>
 		</div>
 	</div>

@@ -3,22 +3,20 @@
 /* slider carousel css begins */
 
 .slider-carousel {
-  background-image: url("../../uploads/Slider/im1.jpeg");
-  height: 100%;
   margin-bottom: 40px;
-  background-attachment: fixed;
   /* -webkit-filter: blur(5px);
   filter: blur(2px); */
 }
 
 .left-icon,
 .right-icon {
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  border-radius: 50%; /*top left, top right, bottom right, bottom left*/
+  /* background-color: #ff3c00; */
+  color: #ffffff;
+  /* border: 1px solid white; */
+  border-radius: 50%; /* top left, top right, bottom right, bottom left */
   -webkit-border-radius: 50%; /* For safari ios android */
-  -moz-border-radius: 50%; /* For Mozilla  */
+  -moz-border-radius: 50%; /*For Mozilla*/
+  padding-bottom: 12px;
 }
 
 .left-icon:hover,
@@ -31,32 +29,12 @@
   border: 2px solid black; */
 }
 
-.carousel-inner img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-}
-
-.carousel-heading {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-}
-
 /* slider carousel css ends */
 
 /* img-responsive css */
 .img-responsive {
-    margin-left: 0.7px;
+  margin-left: 0.7px;
 }
-
-/* 
-style="height:324px; width:100%; object-fit:cover;"
-<a href="{{url('show',$row->slug)}}">
-style="height:100px; width:100px; object-fit:fill;"
-fa fa-chevron-circle-left
- */
 
 .justify-paragraph {
   text-align: justify;
@@ -65,4 +43,11 @@ fa fa-chevron-circle-left
 .imagesss:hover {
   -webkit-filter: blur(5px);
   filter: blur(1.5px);
+}
+
+@media (max-width: 600px) {
+  .fixme {
+    width: 100%;
+    position: static;
+  }
 }

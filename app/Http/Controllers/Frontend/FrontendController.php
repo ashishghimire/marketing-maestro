@@ -269,7 +269,6 @@ class FrontendController extends Controller
 
         $recentad = Advertising::latest()->paginate(4);
 
-
         return view('frontend.marketing.singlegridlayouts', compact('data', 'advertising', 'blogad', 'recentad'));
 
     }
@@ -480,11 +479,16 @@ class FrontendController extends Controller
 
         $latestContent = array_map(function ($type) use ($addressMap) {
             $content = $this->{$type}->orderBy('created_at', 'desc')->first();
+            // dd(empty($content));
             if (!empty($content)) {
                 $content->filePath = $addressMap[$type];
                 return $content;
             };
         }, $contentTypes);
+
+        $latestContent = array_values(array_filter($latestContent, function($value){
+            return isset($value);
+        }));
 
         return $latestContent;
     }

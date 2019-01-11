@@ -4,19 +4,19 @@
 
 .slider-carousel {
   margin-bottom: 40px;
-  /* -webkit-filter: blur(5px);
-  filter: blur(2px); */
 }
 
 .left-icon,
 .right-icon {
-  /* background-color: #ff3c00; */
   color: #ffffff;
-  /* border: 1px solid white; */
-  border-radius: 50%; /* top left, top right, bottom right, bottom left */
-  -webkit-border-radius: 50%; /* For safari ios android */
-  -moz-border-radius: 50%; /*For Mozilla*/
-  padding-bottom: 12px;
+}
+
+.left-carousel:hover {
+  background-color: #f38546;
+}
+
+.right-carousel:hover {
+  background-color: #00baff;
 }
 
 .left-icon:hover,
@@ -24,17 +24,122 @@
   zoom: 1.2;
   -webkit-transition: width 2s; /* Safari */
   transition: width 2s;
-  /* background-color: #fff;
-  color: black;
-  border: 2px solid black; */
 }
 
+.image-slider {
+  background: linear-gradient(
+    rgba(244, 67, 54, 0.45),
+    rgba(244, 67, 54, 0.45),
+    rgba(33, 150, 243, 0.25),
+    rgba(33, 150, 243, 0.25),
+    black,
+    black
+  );
+}
+
+.image-slide {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: -1;
+}
+
+.carousel-heading {
+  position: absolute;
+  top: 76%;
+  left: 50px;
+  background-color: transparent;
+  font-family: Lato, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 39px;
+  text-shadow: 5px 5px 10px gray;
+}
+
+.carousel-date {
+  position: absolute;
+  top: 89.1%;
+  right: 60px;
+  background-color: transparent;
+  font-family: Lato, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 20px;
+}
+
+@media (max-width: 600px) {
+  .carousel-heading {
+    top: 78%;
+    left: 20px;
+    background-color: transparent;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-date {
+    display: none;
+  }
+}
 /* slider carousel css ends */
 
 /* img-responsive css */
-.img-responsive {
-  margin-left: 0.7px;
+
+/* Index page css */
+
+/*images*/
+
+.notfeatured-image {
+  height: 482px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
 }
+
+.featured-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.latest-image {
+  margin-left: 1px;
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.blog-thumb-grad a .small-image {
+  height: 100px;
+  width: 100px;
+  object-fit: fill;
+  border-radius: 4px;
+  border: 2px solid #d7e0ef;
+}
+
+/*End of image css */
+
+/* ADS container css */
+.ad-container {
+  margin-top: 70px;
+}
+
+@media (max-width: 600px) {
+  .fixme {
+    width: 100%;
+    position: static;
+  }
+}
+/* ADS ends */
 
 .justify-paragraph {
   text-align: justify;
@@ -45,9 +150,12 @@
   filter: blur(1.5px);
 }
 
-@media (max-width: 600px) {
-  .fixme {
-    width: 100%;
-    position: static;
-  }
+/* 
+html {
+  scroll-behavior: smooth;
+}
+*/
+
+img {
+  border-radius: 4px;
 }

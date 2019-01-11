@@ -11,7 +11,8 @@
 
 					<div class="navbar-brand">
 						<a href="{{url('/')}}">
-							<img src="{{url('/uploads/dashboard.png')}}" style="height: 120px; width:120px;" alt="Logo">
+							<img src="{{url('/uploads/dashboard.png')}}"
+								 style="height: 120px; width:120px;" alt="Logo">
 						</a>
 					</div>
 				</div><!--/end responsive container-->
@@ -23,8 +24,6 @@
 							<!-- Home -->
 							<li class="dropdown home active">
 								<a href="{{url('/')}}"><i class="fa fa-home"></i>Home</a>
-								
-								
 							</li>
 							<!-- End Home -->
 
@@ -70,18 +69,7 @@
 							<!-- Lifestyle -->
 							<li class="dropdown">
 								<a href="{{url('interview')}}"><i class="fa fa-book" aria-hidden="true"></i> Interviews</a>
-								
-						
 							</li>
-							
-
-							
-							<li class="dropdown">
-								<a href="{{url('/')}}"><i class="fa fa-phone" aria-hidden="true"></i> Contacts</a>
-								
-						
-							</li>
-
 							<!-- Main Demo -->
 						</ul>
 					</div><!--/responsive container-->

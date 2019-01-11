@@ -17,3 +17,4 @@ class Cms extends Model
 		return $this->hasMany('App\Models\Marketing\Cms', 'parent_id');
 	}
 }
+

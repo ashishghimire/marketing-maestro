@@ -248,6 +248,8 @@ class FrontendController extends Controller
 
         $advertising = AdvertisingCategory::where('slug', $slug)->first();
 
+        $relatedContent = Advertising::orderBy('created_at', 'desc')->limit(4)->get();
+        $contentPath = 'show';
 
         $get_ad_cat_id = $advertising->id;
 
@@ -256,7 +258,7 @@ class FrontendController extends Controller
 
 
         // $getdata=$advertising->advertising_category_id->first();
-        return view('frontend.marketing.gridlayouts', compact('peak'));
+        return view('frontend.marketing.gridlayouts', compact('peak', 'relatedContent', 'contentPath'));
 
     }
 
@@ -267,10 +269,13 @@ class FrontendController extends Controller
         $advertising = Advertising::paginate(4);
         $blogad = Advertising::paginate(4);
 
+        $relatedContent = Advertising::orderBy('created_at', 'desc')->limit(4)->get();
+        $contentPath = 'show';
+
+
         $recentad = Advertising::latest()->paginate(4);
 
-
-        return view('frontend.marketing.singlegridlayouts', compact('data', 'advertising', 'blogad', 'recentad'));
+        return view('frontend.marketing.singlegridlayouts', compact('data', 'advertising', 'blogad', 'recentad', 'relatedContent', 'contentPath'));
 
     }
 
@@ -295,12 +300,14 @@ class FrontendController extends Controller
 
         $get_ad_cat_id = $resource->id;
 
+        $relatedContent = OtherResource::orderBy('created_at', 'desc')->limit(4)->get();
+        $contentPath = 'resource/show';
 
         $peak = $this->otherresource->where('other_resource_category_id', $get_ad_cat_id)->paginate(4);
 
 
         // $getdata=$advertising->advertising_category_id->first();
-        return view('frontend.marketing.resource.gridlayouts', compact('peak'));
+        return view('frontend.marketing.resource.gridlayouts', compact('peak', 'relatedContent', 'contentPath'));
 
     }
 
@@ -314,7 +321,10 @@ class FrontendController extends Controller
         // $otherresourcead=OtherResource::paginate(4);
         // $recentad=OtherResource::latest()->paginate(4);
 
-        return view('frontend.marketing.resource.singlegridlayouts', compact('data'));
+        $relatedContent = OtherResource::orderBy('created_at', 'desc')->limit(4)->get();
+        $contentPath = 'resource/show';
+
+        return view('frontend.marketing.resource.singlegridlayouts', compact('data', 'relatedContent', 'contentPath'));
 
     }
 
@@ -386,6 +396,7 @@ class FrontendController extends Controller
 
         $peak = Interview::where('interview_category_id', $get_int_cat_id)->paginate(4);
 
+
         return view('frontend.marketing.interview.gridlayouts', compact('peak'));
 
 
@@ -394,7 +405,11 @@ class FrontendController extends Controller
     public function showinterview($slug)
     {
         $data = Interview::where('slug', $slug)->first();
-        return view('frontend.marketing.interview.singlegridlayouts', compact('data'));
+
+        $relatedContent = Interview::orderBy('created_at', 'desc')->limit(4)->get();
+        $contentPath = 'interview/show';
+
+        return view('frontend.marketing.interview.singlegridlayouts', compact('data', 'contentPath', 'relatedContent'));
 
 
     }
@@ -405,8 +420,11 @@ class FrontendController extends Controller
 
         $allinterview = Interview::where('featured', 0)->latest()->paginate(6);
 
+        $relatedContent = Interview::orderBy('created_at', 'desc')->limit(4)->get();
+        $contentPath = 'interview/show';
 
-        return view('frontend.marketing.interview.allnavlayouts', compact('allinterview'));
+
+        return view('frontend.marketing.interview.allnavlayouts', compact('allinterview', 'relatedContent', 'contentPath'));
 
 
     }
@@ -435,7 +453,10 @@ class FrontendController extends Controller
     {
         $data = CaseStudy::where('slug', $slug)->first();
 
-        return view('frontend.marketing.casestudy.singlegridlayouts', compact('data'));
+        $relatedContent = CaseStudy::orderBy('created_at', 'desc')->limit(4)->get();
+        $contentPath = 'casestudy/show';
+
+        return view('frontend.marketing.casestudy.singlegridlayouts', compact('data', 'contentPath', 'relatedContent'));
 
 
     }
@@ -446,8 +467,10 @@ class FrontendController extends Controller
 
         $allcasestudy = CaseStudy::where('featured', 0)->latest()->paginate(6);
 
+        $relatedContent = CaseStudy::orderBy('created_at', 'desc')->limit(4)->get();
+        $contentPath = 'casestudy/show';
 
-        return view('frontend.marketing.casestudy.allnavlayouts', compact('allcasestudy'));
+        return view('frontend.marketing.casestudy.allnavlayouts', compact('allcasestudy', 'relatedContent', 'contentPath'));
 
 
     }
@@ -480,11 +503,16 @@ class FrontendController extends Controller
 
         $latestContent = array_map(function ($type) use ($addressMap) {
             $content = $this->{$type}->orderBy('created_at', 'desc')->first();
+            // dd(empty($content));
             if (!empty($content)) {
                 $content->filePath = $addressMap[$type];
                 return $content;
             };
         }, $contentTypes);
+
+        $latestContent = array_values(array_filter($latestContent, function ($value) {
+            return isset($value);
+        }));
 
         return $latestContent;
     }

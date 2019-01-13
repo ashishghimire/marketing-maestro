@@ -21,9 +21,7 @@
 		<!-- Masonry Box -->
 		<div class="masonry-box">
 			<!-- Blog Grid -->
-			@foreach($allresource as $row)
-			
-
+			@forelse($allresource as $row)
 			<div class="blog-grid masonry-box-in col-3">
 				<a href="{{url('resource/show',$row->slug)}}"><img class="img-responsive" src="{{url('public/uploads/OtherResource',$row->file)}}" style="height: 250px; width:250px"; alt=""></a>
 				<h3><a href="{{url('show',$row->slug)}}">{{$row->title}}</a></h3>
@@ -35,7 +33,9 @@
 				<p>{!! substr($row->description, 0,10)!!} {{ strlen($row->description) > 10 ? "..." : ""}}</p>
 				<a class="r-more" href="{{url('resource/show',$row->slug)}}">Read More</a>
 			</div>
-			@endforeach
+			@empty
+				<span>Sorry, no data here</span>
+			@endforelse
 			
 		</div>
 		<!-- End Masonry Box -->

@@ -11,14 +11,6 @@
     color: #ffffff;
 }
 
-.left-carousel:hover {
-    background-color: #f38546;
-}
-
-.right-carousel:hover {
-    background-color: #00baff;
-}
-
 .left-icon:hover,
 .right-icon:hover {
     zoom: 1.2;
@@ -143,7 +135,7 @@
 
 /* ADS ends */
 
-.justify-paragraph {
+p {
     text-align: justify;
 }
 
@@ -154,7 +146,7 @@
 
 /*
 html {
-  scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 */
 

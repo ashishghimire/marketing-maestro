@@ -17,9 +17,14 @@
                             <div class="addthis_sharing_toolbox"></div>
                         </div>
                     </div>
+                    <<<<<<< HEAD
                     <img class="img-responsive" src="{{url('/uploads/Interview/'.$data->file)}}"
-                         style="height:100%; width:100%; object-fit:cover;"
-                         alt="">
+                    =======
+                    <img class="img-responsive"
+                         src="{{isset($data->coverpic) ? url('/uploads/Interview/cover-pics'.$data->coverpic) : url('/uploads/Interview/'.$data->file)}}"
+                    >>>>>>> c8b01895de03ae7c4357a1b01ecf874f4c1a3eee
+                    style="height:100%; width:100%; object-fit:cover;"
+                    alt="">
                 </div>
                 <!-- End Blog Grid -->
                 <p>{!!$data->description!!}</p><br>
@@ -43,8 +48,8 @@
 
             <div class="col-md-3">
                 <!-- Blog Thumb v2 -->
-                @include('frontend.marketing.partials.relatedcontent')
-                <!-- End Blog Thumb v2 -->
+            @include('frontend.marketing.partials.relatedcontent')
+            <!-- End Blog Thumb v2 -->
 
                 <!-- Social Shares -->
                 <div class="margin-bottom-20">

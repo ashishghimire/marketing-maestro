@@ -40,8 +40,8 @@
 
             <div class="col-md-3">
                 <!-- Blog Thumb v2 -->
-               @include('frontend.marketing.partials.relatedcontent')
-                <!-- End Blog Thumb v2 -->
+            @include('frontend.marketing.partials.relatedcontent')
+            <!-- End Blog Thumb v2 -->
                 <!-- Social Shares -->
             @include('frontend.marketing.partials.socialshares')
             <!-- End Social Shares -->

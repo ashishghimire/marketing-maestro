@@ -9,8 +9,15 @@
             @forelse($sliderContent as $key=> $content)
                 <div class="item {{$key==0 ?'active':''}}" id="slide{{$key+1}}">
                     <div class="image-slider">
-                        <img class="img-responsive image-slide"
-                             src="{{url($content->filePath.$content->file)}}">
+
+                        @if(!empty($content->coverpic))
+                            <img class="img-responsive image-slide"
+                                 src="{{url($content->filePath.'cover-pics/'.$content->coverpic)}}">
+                        @else
+                            <img class="img-responsive image-slide"
+                                 src="{{url($content->filePath.$content->file)}}">
+                        @endif
+
                         <h4 class="carousel-heading">
                             {{$content->title}}
                         </h4>

@@ -125,7 +125,7 @@ class AdvertisingController extends Controller
         $advertising_category_id = $this->advertisingcategory->pluck('title', 'id');
 
 
-        return view('backend.advertisement.index', compact('data', 'model', 'advertising_category_id', 'advertising_tag_id'));
+        return view('backend.advertisement.index', compact('data', 'model', 'advertising_category_id'));
 
     }
 
@@ -157,7 +157,7 @@ class AdvertisingController extends Controller
             if ($request->hasFile('coverpic')) {
                 $coverPic = $request->file('coverpic');
                 $coverPicName = $this->fileService->storeFile($coverPic);
-                $p = $file->move(base_path() . '/public/uploads/Advertising1/cover-pics', $coverPicName);
+                $p = $coverPic->move(base_path() . '/public/uploads/Advertising1/cover-pics', $coverPicName);
                 $data['coverpic'] = $coverPicName;
             }
 

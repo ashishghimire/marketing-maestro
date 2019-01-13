@@ -72,6 +72,7 @@
                         <a href="{{url('interview')}}"><i class="fa fa-book" aria-hidden="true"></i> Interviews</a>
                     </li>
                     <!-- Main Demo -->
+
                 </ul>
             </div><!--/responsive container-->
         </div><!--/navbar-collapse-->

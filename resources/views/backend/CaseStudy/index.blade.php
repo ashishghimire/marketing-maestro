@@ -38,7 +38,7 @@
 
             
              <div class="form-group">
-                {{ Form::label('file','Image', ['class' => 'col-lg-2 control-label']) }}
+                {{ Form::label('file','Thumbnail', ['class' => 'col-lg-2 control-label']) }}
 
                 <div class="col-lg-10 @if($errors->has('file')) has-error @endif">
                 {{--     {{ Form::file('file', NULL, ['class' => 'form-control-file', 'placeholder' =>'Enter the file']) }} --}}
@@ -57,7 +57,24 @@
             </div>
 
 
-            
+                <div class="form-group">
+                    {{ Form::label('coverpic','Cover Pic', ['class' => 'col-lg-2 control-label']) }}
+
+                    <div class="col-lg-10 @if($errors->has('coverpic')) has-error @endif">
+                        {{--     {{ Form::file('file', NULL, ['class' => 'form-control-file', 'placeholder' =>'Enter the file']) }} --}}
+                        <input type="file" name="coverpic">
+                        <img src="" width="200px" />
+                        @if ($errors->has('coverpic')) <p class="help-block">{{ $errors->first('coverpic') }}</p> @endif
+                        <p class="well text-danger">*Note:-Please select the Cover Picture</p>
+                        <div class="col-lg-5">
+
+                            @if(isset($model) && !empty($model->coverpic))
+                                <img src="{!! url('public/uploads/CaseStudy/'.$model->coverpic)!!}" style="width:150px; height:150px;">
+                            @endif
+                        </div>
+
+                    </div>
+                </div>
             
             
 

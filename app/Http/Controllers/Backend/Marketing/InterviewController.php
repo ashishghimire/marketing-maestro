@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Marketing;
 
+use App\Services\FileService;
 use Illuminate\Http\Request;
 use App\Models\Marketing\Interview;
 use App\Models\Marketing\InterviewCategory;
@@ -15,16 +16,20 @@ class InterviewController extends Controller
 {
      public $model;
    public $interviewcategory;
-        
-        
+    /**
+     * @var FileService
+     */
+    private $fileService;
 
-        public function __construct(Interview $model, InterviewCategory $interviewcategory )
+
+    public function __construct(Interview $model, InterviewCategory $interviewcategory, FileService $fileService )
         {
 
             $this->model = $model;
             $this->interviewcategory = $interviewcategory;
-           
-            
+
+
+            $this->fileService = $fileService;
         }
 
 
@@ -39,8 +44,8 @@ class InterviewController extends Controller
 
 
 
-           
-            
+
+
 
 
             return view('backend.Interview.index' , compact('data','interview_category_id','interview_tag_id'));
@@ -54,7 +59,7 @@ class InterviewController extends Controller
             return view('backend.Interview.create');
         }
 
-     		
+
 
 
 
@@ -69,40 +74,37 @@ class InterviewController extends Controller
                 'title'=>'required',
                 'description'=>'required',
                  'file'=>'required|mimes:jpg,jpeg,png,gif,svg,bmp',
-                
+
 
 
            ));
-
- 
-            if ($request->hasFile('file')) 
-         {
-         
-            $file = $request->file('file');
-
-            $originalName = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $size = $file->getClientSize();
-            $originalNameWithoutExt = substr($originalName , 0 , strlen($originalName) - strlen($extension) - 1);
-            $number = mt_rand(10000 , 99999);
-            $filename = $originalNameWithoutExt . '-' . $number .  "." .$extension;
-            $file = $request->file('file');
-            $p = $file-> move( base_path() . '/public/uploads/Interview/' , $filename );
-           
             $data = [
-                
+
                 'title' => $request->title,
                 'description' => $request->description,
                 'featured' => $request->featured ? $request->featured : 0,
-                 'slug'=>$slug,
-                 'order'=>$request->order,
-                'file'      => $filename,
-                
-                
+                'slug'=>$slug,
+                'order'=>$request->order,
             ];
 
-          
-            $latest=$this->model->create($data);
+            if ($request->hasFile('file') || $request->hasFile('coverpic'))
+            {
+
+                if ($request->hasFile('file')) {
+                    $file = $request->file('file');
+                    $filename = $this->fileService->storeFile($file);
+                    $p = $file->move(base_path() . '/public/uploads/Interview/', $filename);
+                    $data['file'] = $filename;
+                }
+
+                if ($request->hasFile('coverpic')) {
+                    $coverPic = $request->file('coverpic');
+                    $coverPicName = $this->fileService->storeFile($coverPic);
+                    $p = $coverPic->move(base_path() . '/public/uploads/Interview/cover-pics', $coverPicName);
+                    $data['coverpic'] = $coverPicName;
+                }
+
+                $latest=$this->model->create($data);
             }
 
              else{
@@ -116,7 +118,7 @@ class InterviewController extends Controller
 
          Session::flash('flash_success' , 'The Advertising  Has Been Created');
             Session::flash('flash_type' , 'alert-warning');
-      
+
         return redirect()->back();
 
 
@@ -132,65 +134,54 @@ class InterviewController extends Controller
             $interview_category_id= $this->interviewcategory->pluck('title','id');
             $interview_tag_id=Tag::where('type','interview')->get();
 
-            
+
 
             return view('backend.Interview.index' , compact('data','model','interview_category_id','interview_tag_id'));
-        
+
 }
 
         public function update($id , Request $request)
         {
-              
-     
-              if($request->hasFile('file'))
-            
-            {
-
-            $file = $request->file('file');
-            
-
-           $originalName = $file->getClientOriginalName();
-
-            $extension = $file->getClientOriginalExtension();
-            $size = $file->getClientSize();
-            $originalNameWithoutExt = substr($originalName , 0 , strlen($originalName) - strlen($extension) - 1);
-            
-            $filename = $originalNameWithoutExt . '-'  . '-'  . "." . $extension;
-            $file = $request->file('file');
+            $data = [
 
 
-           $p = $file->move(
-                base_path() . '/public/uploads/Interview/' , $filename
-            );
-            
-           $data = [
-                
-                 
-               'title' => $request->title,
+                'title' => $request->title,
                 'description' => $request->description,
                 'featured' => $request->featured ? $request->featured : 0,
-                'order'=>$requesr->order,
-                'file'      => $filename,
-                
-                 
-
-                
+                'order'=>$request->order,
+//                'file'      => $filename,
             ];
 
-          $this->model->find($id)->update($data);
-      }
+            if ($request->hasFile('file') || $request->hasFile('coverpic')) {
+
+                if ($request->hasFile('file')) {
+                    $file = $request->file('file');
+                    $filename = $this->fileService->storeFile($file);
+                    $p = $file->move(base_path() . '/public/uploads/Interview', $filename);
+                    $data['file'] = $filename;
+                }
+
+                if ($request->hasFile('coverpic')) {
+                    $coverPic = $request->file('coverpic');
+                    $coverPicName = $this->fileService->storeFile($coverPic);
+                    $p = $file->move(base_path() . '/public/uploads/Interview/cover-pics', $coverPicName);
+                    $data['coverpic'] = $coverPicName;
+                }
+
+                $this->model->find($id)->update($data);
+            }
       else
       {
-        
+
 
            $this->model->find($id)->update($request->all());
         }
-        
+
          Session::flash('flash_success' , 'The Advertising  Has Been Updated!.');
             Session::flash('flash_type' , 'alert-warning');
 
              return redirect('admin/interview');
-           
+
         }
 
 
@@ -206,8 +197,8 @@ class InterviewController extends Controller
 
         public function interviewpost()
         {
-        
-        
+
+
         $interviewpost=$this->model->paginate(4);
          return view('backend.Interview.featured.index',compact('interviewpost'));
 
@@ -230,7 +221,7 @@ class InterviewController extends Controller
             Session::flash('success','The post successfully updated');
             return Response::json();
         }
-        
-    
-       
+
+
+
 }

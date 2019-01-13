@@ -11,12 +11,14 @@
   color: #ffffff;
 }
 
-.left-carousel:hover {
-  background-color: #f38546;
+.left-carousel {
+  color: none;
+  background-color: none;
 }
 
-.right-carousel:hover {
-  background-color: #00baff;
+.right-carousel {
+  color: none;
+  background-color: none;
 }
 
 .left-icon:hover,
@@ -88,6 +90,7 @@
     display: none;
   }
 }
+
 /* slider carousel css ends */
 
 /* img-responsive css */
@@ -139,9 +142,10 @@
     position: static;
   }
 }
+
 /* ADS ends */
 
-.justify-paragraph {
+p {
   text-align: justify;
 }
 
@@ -150,9 +154,9 @@
   filter: blur(1.5px);
 }
 
-/* 
+/*
 html {
-  scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 */
 

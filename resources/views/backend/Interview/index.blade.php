@@ -66,7 +66,7 @@
                         <div class="col-lg-5">
 
                             @if(isset($model) && !empty($model->coverpic))
-                                <img src="{!! url('public/uploads/Interview/cover-pics'.$model->coverpic)!!}" style="width:150px; height:150px;">
+                                <img src="{!! url('public/uploads/Interview/cover-pics'.$model->coverpi)!!}" style="width:150px; height:150px;">
                             @endif
                         </div>
 
